@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription Mairie</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+      padding: 0 10px;
+      background: url("https://images.hdqwalls.com/wallpapers/early-morning-mountains-scenery-8n.jpg"), #000;
+      background-position: center;
+      background-size: cover;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .wrapper {
+      width: 400px;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .input-field {
+      position: relative;
+      border-bottom: 2px solid #ccc;
+      margin: 15px 0;
+    }
+
+    .input-field label {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.15s ease;
+    }
+
+    .input-field input {
+      width: 100%;
+      height: 40px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .input-field input:focus~label,
+    .input-field input:valid~label {
+      font-size: 0.8rem;
+      top: 10px;
+      transform: translateY(-120%);
+    }
+
+    .required-field::before {
+      content: '*';
+      color: red;
+      margin-right: 5px;
+    }
+
+    .forget {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 25px 0 35px 0;
+      color: #fff;
+    }
+
+    #remember {
+      accent-color: #fff;
+    }
+
+    .forget label {
+      display: flex;
+      align-items: center;
+    }
+
+    .forget label p {
+      margin-left: 8px;
+    }
+
+    .wrapper a {
+      color: #efefef;
+      text-decoration: none;
+    }
+
+    .wrapper a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 16px;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      color: #fff;
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .register {
+      text-align: center;
+      margin-top: 30px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form method="post" >{% csrf_token %}
+
+      <h2>S'inscrire</h2>
+      {% for message in messages %}
+      <p>{{message}}</p>
+      {% endfor %}
+      <div class="input-field">
+        <input type="text" name="username" id="username" required>
+        <label for="username" class="required-field">Nom Utilisateur</label>
+      </div>
+       <div class="input-field">
+        <input type="text" name="nom" id="nom" required>
+        <label for="nom" class="required-field">Nom</label>
+      </div>
+      <div class="input-field">
+        <input type="email" name="email" id="email" required>
+        <label for="email" class="required-field">Email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="mot_de_passe" id="mot_de_passe" required>
+        <label for="mot_de_passe" class="required-field">Mot de passe</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="confirmation_mot_de_passe" id="confirmation_mot_de_passe" required>
+        <label for="confirmation_mot_de_passe" class="required-field">Confirmer le mot de passe</label>
+      </div>
+      <button type="submit">S'inscrire</button>
+    </form>
+
+    <p class="link">Vous avez déjà un compte ? <a href="../Connexion">Se connecter</a></p>
+  </div>
+</body>
+</html>

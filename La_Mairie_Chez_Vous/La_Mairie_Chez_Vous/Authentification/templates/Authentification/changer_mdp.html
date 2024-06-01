@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* style.css */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701346534.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .animated-div {
+            width: 90%; /* Utiliser une largeur flexible */
+            max-width: 400px; /* Limiter la largeur maximale */
+            height: auto; /* Ajuster la hauteur automatiquement */
+            color: white; /* Changer la couleur du texte */
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column; /* Disposer les éléments verticalement */
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            padding: 20px; /* Ajouter un peu de padding */
+            box-sizing: border-box; /* Inclure le padding et la bordure dans la taille de l'élément */
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Animation de mise à l'échelle */
+        @keyframes scale {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+        .scale {
+            animation: scale 3s infinite;
+        }
+
+        button {
+            background-color: #3498db; /* Bleu clair */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Bleu moyen au survol */
+        }
+
+        button:active {
+            background-color: #1f618d; /* Bleu foncé lorsque cliqué */
+        }
+
+        /* Media queries pour des ajustements supplémentaires */
+        @media (max-width: 600px) {
+            .animated-div {
+                padding: 15px; /* Réduire le padding sur les petits écrans */
+                font-size: 14px; /* Réduire la taille de la police sur les petits écrans */
+            }
+
+            input {
+                padding: 8px; /* Réduire le padding des inputs sur les petits écrans */
+                font-size: 14px; /* Réduire la taille de la police des inputs sur les petits écrans */
+            }
+
+            button {
+                padding: 8px 16px; /* Réduire le padding du bouton sur les petits écrans */
+                font-size: 14px; /* Réduire la taille de la police du bouton sur les petits écrans */
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <div class="animated-div scale">
+            <p>Entrer votre Email</p>
+            {% csrf_token %}
+            <input name="email" type="email" placeholder="email">
+            <input name="password" type="password" placeholder="mot de passe">
+            <button type="submit">Confirmer</button>
+        </div>
+    </form>
+</body>
+</html>
